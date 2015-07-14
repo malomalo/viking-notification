@@ -1,0 +1,110 @@
+#notification-center {
+  position:fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index:99999;
+
+  .notification {
+    text-align: center;
+    padding: 5px 0 5px 5px;
+    font-size: 1em;  
+    font-weight: 300;
+    
+    a {
+      text-decoration:underline;
+    }
+    
+    .close {
+      float:right;
+      margin-top: -5px;
+      margin-bottom: -5px;
+      padding:5px;
+      cursor: pointer;
+      text-decoration:none;
+      &:hover{
+        text-decoration:underline;
+      }
+    }
+
+    &.info {
+      color: #FFFFFF;
+      background: #97C848;
+      a { color: #FFFFFF; }
+    }
+    
+    &.warning {
+      color: #FFFFFF;
+      background: #0994E2;
+      a { color: #FFFFFF; }
+    }
+    
+    &.error {
+      color: #FFFFFF;
+      background: #D8000C;
+      a { color: #FFFFFF; }
+    }
+  }
+
+  @include keyframes(slideInUp) {
+    0% {
+      @include transform(translate3d(0, 100%, 0));
+      visibility: visible;
+    }
+    100% {
+      @include transform(translate3d(0, 0, 0));
+    }
+  }
+
+  
+  @include keyframes(slideOutDown) {
+    0% {
+      @include transform(translate3d(0, 0, 0));
+    }
+    100% {
+      visibility: hidden;
+      @include transform(translate3d(0, 100%, 0));
+    }
+  }
+
+  @include keyframes(slideInDown) {
+    0% {
+      visibility: visible;
+      @include transform(translate3d(0, -100%, 0));
+    }
+    100% {
+      @include transform(translate3d(0, 0, 0));
+    }
+  }
+
+  @include keyframes(slideOutUp) {
+    0% {
+      @include transform(translate3d(0, 0, 0));
+    }
+    100% {
+      visibility: hidden;
+      @include transform(translate3d(0, -100%, 0));
+    }
+  }
+
+  .slideInUp {
+    @include animation-duration(0.1s);
+    @include animation-name(slideInUp);
+  }
+
+  .slideOutDown {
+    @include animation-duration(0.1s);
+    @include animation-name(slideOutDown);
+  }
+
+  .slideOutUp {
+    @include animation-duration(0.1s);
+    @include animation-name(slideOutUp);
+  }
+
+  .slideInDown {
+    @include animation-duration(0.1s);
+    @include animation-name(slideInDown);
+  }
+  
+}
